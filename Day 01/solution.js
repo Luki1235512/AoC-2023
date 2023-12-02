@@ -33,7 +33,7 @@ const convertWordToNumber = word => {
 
 const isValidWord = word => /^(one|two|three|four|five|six|seven|eight|nine|\d)$/.test(word);
 
-const part2 = () => {
+function part2() {
   const sum = content.reduce((acc, elem) => {
     const result = [];
 
