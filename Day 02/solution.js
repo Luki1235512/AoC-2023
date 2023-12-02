@@ -36,8 +36,32 @@ function part1() {
 }
 
 function part2() {
+  const powerOfSet = content.map(gameString => {
+    const [gameNumber, setsString] = gameString.split(':').map(part => part.trim());
 
+    const sets = setsString.split(';').map(set => set.trim());
+
+    const colors = {
+      'red': 0,
+      'green': 0,
+      'blue': 0
+    };
+
+    sets.forEach(set => {
+      set.split(',').forEach(item => {
+        const [quantity, color] = item.trim().split(' ');
+        colors[color] = Math.max(colors[color], parseInt(quantity, 10));
+      });
+    });
+
+    return {
+      'Game ID': gameNumber.match(/\d+/)[0],
+      'MaxColors': colors.blue * colors.red * colors.green
+    };
+  });
+
+  console.log(powerOfSet.reduce((sum, entry) => sum + entry.MaxColors, 0));
 };
 
 part1();
-// part2();
+part2();
