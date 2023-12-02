@@ -56,11 +56,11 @@ function part2() {
 
     return {
       'Game ID': gameNumber.match(/\d+/)[0],
-      'MaxColors': colors.blue * colors.red * colors.green
+      'PowerColors': colors.blue * colors.red * colors.green
     };
   });
 
-  console.log(powerOfSet.reduce((sum, entry) => sum + entry.MaxColors, 0));
+  console.log(powerOfSet.reduce((sum, entry) => sum + entry.PowerColors, 0));
 };
 
 part1();
