@@ -25,7 +25,21 @@ function part1() {
 }
 
 function part2() {
+  let cards = content.map(() => 1);
 
+  content.forEach((line, i) => {
+    const [left, right] = line.split('|');
+    const leftNumbers = left.trim().split(/\s+/);
+    const rightNumbers = right.trim().split(/\s+/);
+  
+    const matchingNumbers = leftNumbers.filter(number => rightNumbers.includes(number));
+  
+    for (let j = i + 1; j < Math.min(i + 1 + matchingNumbers.length, content.length); j++) {
+      cards[j] += cards[i];
+    }
+  });
+  
+  console.log(cards.reduce((totalSum, card) => totalSum + card, 0));
 };
 
 part1();
